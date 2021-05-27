@@ -261,6 +261,7 @@ local function processData(szType, content)
 					result.flow = "2"
 				else
 					result.flow = "1"
+				end	
 			else
 				result.tls = "0"
 			end
