@@ -293,12 +293,12 @@ case "$run_mode" in
 		ipset -! restore </tmp/china.ipset 2>/dev/null
 		rm -f /tmp/china.ipset
 		if [ $(nvram get ss_chdns) = 1 ]; then
-			chinadnsng_enable_flag=1
-			logger -t "SS" "下载cdn域名文件..."
-			wget --no-check-certificate --timeout=8 -qO - https://raw.githubusercontent.com/hq450/fancyss/master/rules/cdn.txt > /tmp/cdn.txt
+			chinadnsng_enable_flag=1			
 			if [ ! -f "/tmp/cdn.txt" ]; then
 				logger -t "SS" "cdn域名文件下载失败，可能是地址失效或者网络异常！可能会影响部分国内域名解析了国外的IP！"
 			else
+				logger -t "SS" "下载cdn域名文件..."
+				wget --no-check-certificate --timeout=8 -qO - https://raw.githubusercontent.com/hq450/fancyss/master/rules/cdn.txt > /tmp/cdn.txt
 				logger -t "SS" "cdn域名文件下载成功"
 			fi
 			logger -st "SS" "启动chinadns..."
